@@ -1,0 +1,18 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: host_route
+          uri: http://localhost:8090
+          predicates:
+            - Path=/servicea/**
+          filters:
+            - StripPrefix=1
+        - id: host_route
+          uri: http://localhost:8091
+          predicates:
+            - Path=/{serviceb}/**
+          filters:
+            - StripPrefix=1
+
+
